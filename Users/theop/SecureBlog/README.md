@@ -32,3 +32,8 @@ npm run dev   # open https://localhost:5173
 ## Notes
 - **Do not commit** `.env` or `.pem` files (see `.gitignore`).
 - Research notes: `jwt_research.md`.
+## Task – Content Security Policy (Helmet)
+- Helmet enabled on the backend (+ CSP in **report-only** for dev)
+- CSP reports POST to `/csp-report` (see server logs)
+- Frontend has intentional violations in `index.html` to demonstrate blocking
+- To keep styles during dev: `style-src 'self' 'unsafe-inline'`

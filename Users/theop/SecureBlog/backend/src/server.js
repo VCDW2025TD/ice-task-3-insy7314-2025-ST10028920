@@ -12,13 +12,12 @@ const sslOptions = {
   cert: fs.readFileSync(path.join(__dirname, '..', 'ssl', 'certificate.pem')),
 };
 
+// Start HTTPS server first so /health works even if Mongo fails
+https.createServer(sslOptions, app).listen(PORT, () => {
+  console.log('Secure server running at https://localhost:' + PORT);
+});
+
+// Connect to Mongo (log status; does not block server start)
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => {
-    https.createServer(sslOptions, app).listen(PORT, () => {
-      // use string concatenation to avoid template literal/backtick issues
-      console.log('Secure server running at https://localhost:' + PORT);
-    });
-  })
-  .catch((err) => {
-    console.error('MongoDB connection error:', err.message);
-  });
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.error('MongoDB connection error:', err.message));
