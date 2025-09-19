@@ -1,0 +1,4 @@
+JSON Web Tokens (JWTs) are compact, signed tokens (RFC 7519) that carry claims between a client and server. In web apps they’re usually sent in the HTTP Authorization header as “Bearer <token>”, so each request can be authenticated without server-side session storage. JWTs are useful for stateless auth and scale, but security depends on strong signing keys, short expirations, and only allowing the expected signing algorithm. Without those, tokens can be forged or abused; a well-known class of incidents involved apps/libraries accepting alg:none or confusing HS256 vs RS256, which allowed attackers to create valid-looking tokens when misconfigured. Best practice: always use HTTPS, enforce an explicit algorithm, use long random secrets or managed key pairs, set short expirations, and rotate keys regularly.
+
+
+
