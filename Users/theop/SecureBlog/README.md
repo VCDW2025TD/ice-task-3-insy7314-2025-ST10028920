@@ -37,3 +37,10 @@ npm run dev   # open https://localhost:5173
 - CSP reports POST to `/csp-report` (see server logs)
 - Frontend has intentional violations in `index.html` to demonstrate blocking
 - To keep styles during dev: `style-src 'self' 'unsafe-inline'`
+## Task 4: Helmet + CSP
+- Helmet enabled plus custom CSP (report-only in dev).
+- Violation reports POST to `/csp-report`.
+- Intentional violations placed in `frontend/index.html` (inline + CDN).
+- Run:
+  - Backend: `cd backend && npm run dev` → https://localhost:5000
+  - Frontend: `cd ../frontend && npm run dev` → https://localhost:5173
