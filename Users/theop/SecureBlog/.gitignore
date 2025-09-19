@@ -1,16 +1,11 @@
-# SSL dev certs (never commit private keys)
-ssl/*.pem
-backend/ssl/*.pem
-frontend/ssl/*.pem
-
-# Node & build
-node_modules/
-dist/
+﻿# --- secrets / dev certs ---
 .env
-# SSL keys
-backend/ssl/*.pem
+**/.env
+*.pem
 ssl/*.pem
+backend/ssl/*.pem
 
-# Env files
-backend/.env
-frontend/.env
+# --- build + deps ---
+node_modules/
+**/node_modules/
+dist/
